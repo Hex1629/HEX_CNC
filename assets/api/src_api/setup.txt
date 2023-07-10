@@ -1,0 +1,17 @@
+1 use vps or replit ( work in linux or windows only )
+2 upload file in vps/replit
+
+( linux or windows not install )
+3.1 DOS_APIv1
+ use command -->
+ pip install numerize
+ <-- use command
+3.2 DOS_APIv2 and DOS_APIv3
+ use command -->
+ pip install numerize
+ pip install PySocks
+ <-- use command
+
+4 re-open if down ( linux only )
+screen python main.py
+screen python3 main.py
