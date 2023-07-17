@@ -6,7 +6,7 @@
  use command -->
  pip install numerize
  <-- use command
-3.2 DOS_APIv2 and DOS_APIv3
+3.2 DOS_APIv2 DOS_APIv3 DOSv4 and DOSv5
  use command -->
  pip install numerize
  pip install PySocks
