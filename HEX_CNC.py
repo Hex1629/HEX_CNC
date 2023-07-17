@@ -4,6 +4,7 @@ import time
 import threading
 import requests
 import sys
+import random
 from colored import fg,attr
 
 PORT_SERVER = 0
@@ -124,6 +125,20 @@ banner_layer4 = f'''
 {fg(41)}'::'                       ╠═══╩═════════╩════════════════════════════════════════════╣ ║
 {fg(40)}MADE BY HuynhNhatToan#1137 ║ ━ ━ ━ ━ ━ ━ ━ WELCOME TO HUB.HEX-XS.LAYER4 ━ ━ ━ ━ ━ ━ ━ ║ ║
 {fg(34)}                           ╚══════════════════════════════════════════════════════════╝═╝'''
+
+loading_screen = f'''
+{fg(255)}[     {fg(255)}] {fg(196)}0{fg(255)}%
+{fg(255)}[{fg(44)}█    {fg(255)}] {fg(197)}1{fg(255)}%
+{fg(255)}[{fg(43)}██   {fg(255)}] {fg(198)}2{fg(255)}%
+{fg(255)}[{fg(42)}███  {fg(255)}] {fg(199)}3{fg(255)}%
+{fg(255)}[{fg(41)}████ {fg(255)}] {fg(200)}4{fg(255)}%
+{fg(255)}[{fg(40)}█████{fg(255)}] {fg(201)}5{fg(255)}%
+{fg(255)}[{fg(40)}█████{fg(255)}] {fg(201)}5{fg(255)}%
+{fg(255)}[{fg(41)}████ {fg(255)}] {fg(200)}4{fg(255)}%
+{fg(255)}[{fg(42)}███  {fg(255)}] {fg(199)}3{fg(255)}%
+{fg(255)}[{fg(43)}██   {fg(255)}] {fg(198)}2{fg(255)}%
+{fg(255)}[{fg(44)}█    {fg(255)}] {fg(197)}1{fg(255)}%
+{fg(255)}[     {fg(255)}] {fg(196)}0{fg(255)}%'''
 
 class CHECKING:
     global KEY_ACCESS,LIST_LOGIN
@@ -342,6 +357,10 @@ class CLIENT_BUILDER():
     def CLIENT_CONTROL(socks,ip):
         global LIST_LOGIN
         try:
+            for x in loading_screen.split('\n'):
+               CLIENT_BUILDER.SEND(socks,x)
+               time.sleep(0.5)
+               CLIENT_BUILDER.SEND(socks,'\033[2J\033[H')
             threading.Thread(target=CLIENT_BUILDER.TITLE_CONTROL,args=(socks,ip,'TITLE')).start()
             
             for x in banner_first.split('\n'):
@@ -374,6 +393,10 @@ class CLIENT_BUILDER():
                     CLIENT_BUILDER.SEND(socks, x)
                     time.sleep(0.1)
              elif COM == 'MENU':
+               for x in loading_screen.split('\n'):
+                CLIENT_BUILDER.SEND(socks,x)
+                time.sleep(0.5)
+                CLIENT_BUILDER.SEND(socks,'\033[2J\033[H')
                CLIENT_BUILDER.SEND(socks,'\033[2J\033[H')
                for x in banner_first.split('\n'):
                     CLIENT_BUILDER.SEND(socks, x)
@@ -413,6 +436,10 @@ class CLIENT_BUILDER():
                  spam_api = command[4]
                  method = command[5]
                  if method in methods:
+                    for x in loading_screen.split('\n'):
+                     CLIENT_BUILDER.SEND(socks,x)
+                     time.sleep(0.5)
+                     CLIENT_BUILDER.SEND(socks,'\033[2J\033[H')
                     for x in banner_attack.split('\n'):
                        CLIENT_BUILDER.SEND(socks,x.replace('TARGET',ip_tar).replace('NUMBER',port).replace('NAME',f"{method}_HEX1629").replace('WAIT',f'ATTACK --> {len(CHECKING.API_ONLINE)}'))
                        time.sleep(0.1)
@@ -457,6 +484,10 @@ class CLIENT_BUILDER():
                  method_got = command[5]
                  method = command[6]
                  if method in methods:
+                    for x in loading_screen.split('\n'):
+                     CLIENT_BUILDER.SEND(socks,x)
+                     time.sleep(0.5)
+                     CLIENT_BUILDER.SEND(socks,'\033[2J\033[H')
                     for x in banner_attack.split('\n'):
                        CLIENT_BUILDER.SEND(socks,x.replace('TARGET',ip_tar).replace('NUMBER',port).replace('NAME',f"{method}_HEX1629").replace('WAIT',f'ATTACK --> {len(CHECKING.API_ONLINE)}'))
                        time.sleep(0.1)
@@ -485,6 +516,13 @@ class CLIENT_BUILDER():
                    CLIENT_BUILDER.SEND(socks, f"{fg(196)}ATTACKS_L7 <IP> <PORT> <TIME> <SPAM_API> <HTTP> <METHODS>\r\n{fg(197)}METHODS CHOOSE HTTP HTTPS TLS OR SSL")
              elif COM == 'ATTACKS':
                 CLIENT_BUILDER.SEND(socks, f"{fg(196)}ATTACK COMMAND --> L7 USE ATTACKS_L7 L4 USE ATTACKS_L4")
+             elif COM == 'LOADING':
+              for x in loading_screen.split('\n'):
+               CLIENT_BUILDER.SEND(socks,x)
+               time.sleep(0.5)
+               CLIENT_BUILDER.SEND(socks,'\033[2J\033[H')
+             else:
+                CLIENT_BUILDER.SEND(socks,f'{fg(196)}COMMAND NOT FOUND')
              CLIENT_BUILDER.SEND(socks, prompt, False)
         except:
            pass
