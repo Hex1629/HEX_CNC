@@ -1,0 +1,40 @@
+SETUP HEX C2 -->
+
+pip install colored=1.4.4
+python -m pip install colored=1.4.4
+
+python3 HEX_CNC.py
+
+ADD API FOR ATTACKS
+GO TO HEX_CNC/assets/api
+Open API.txt and add you api
+
+CHANGE USER:PASS
+GO TO HEX_CNC\assets\users_login
+Open DB.txt and add user:password
+
+Or write new files and add user:pass
+Next open HEX_CNC\assets\config.txt change line DB_LOAD=DB.txt with you files
+Example
+From DB_LOAD=DB.txt to DB_LOAD=USER.txt
+
+How to change key_access for access register
+Open HEX_CNC\assets\config.txt change line KEY_ACCESS=321@HEXcnc.replit.co with you key
+Example
+From KEY_ACCESS=321@HEXcnc.replit.co to KEY_ACCESS=GOOGLE.HUB
+
+SETUP API -->
+
+UPLOAD API TO VPS/REPLIT
+
+# COMMAND #
+
+v1 ( ONLY )
+pip install numerize
+
+v2 v3 v4 v5 ( ONLY )
+pip install numerize
+pip install PySocks
+
+AND NEXT TYPE
+screen python3 main.py or screen python main.py
