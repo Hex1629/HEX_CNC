@@ -38,3 +38,14 @@ pip install PySocks
 
 AND NEXT TYPE
 screen python3 main.py or screen python main.py
+
+FAQ -->
+
+HOW TO CONNECT PUTTY
+
+OPEN PUTTY
+GO TO CONNECTION TYPE
+CLICK OTHER SET RAW
+Type Hostname with you ip server ( cnc ) example 127.0.0.1
+and Port it show in console
+next click Open
