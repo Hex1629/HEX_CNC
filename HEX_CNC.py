@@ -343,14 +343,9 @@ class CLIENT_BUILDER():
          CLIENT_BUILDER.SEND(socks, f"\33]0;WELOCME TO HEX.CNC :: MADE BY .:HEX:.\a", False)
         elif mode == 'TITLE':
           while True:
-             CLIENT_BUILDER.SEND(socks, f"\33]0;[|] WELCOME TO HEX.CNC | API ONLINE {CHECKING.count_api} | SERVER={CHECKING.status_server}\a", False)
-             time.sleep(0.1)
-             CLIENT_BUILDER.SEND(socks, f"\33]0;[/] WELCOME TO HEX.CNC | API ONLINE {CHECKING.count_api} | SERVER={CHECKING.status_server}\a", False)
-             time.sleep(0.1)
-             CLIENT_BUILDER.SEND(socks, f"\33]0;[-] WELCOME TO HEX.CNC | API ONLINE {CHECKING.count_api} | SERVER={CHECKING.status_server}\a", False)
-             time.sleep(0.1)
-             CLIENT_BUILDER.SEND(socks, f"\33]0;[\] WELCOME TO HEX.CNC | API ONLINE {CHECKING.count_api} | SERVER={CHECKING.status_server}\a", False)
-             time.sleep(0.1)
+             for a in ['\\','|','/','-']:
+              CLIENT_BUILDER.SEND(socks, f"\33]0;[{a}] WELCOME TO HEX.CNC | API ONLINE {CHECKING.count_api} | SERVER={CHECKING.status_server}\a", False)
+              time.sleep(0.1)
        except:
           pass
     
