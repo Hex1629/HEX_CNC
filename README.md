@@ -1,6 +1,3 @@
-![Screenshot 2024-02-26 224644](https://github.com/Hex1629/HEX_CNC/assets/93824226/216edf08-41d0-4496-b2d6-49745762244f)
-
-
 # HEX CNC v 0.3
 API CNC FOR DOS < RELEASE > + ( SRC API )
 
